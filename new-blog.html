@@ -1,0 +1,28 @@
+{% extends "layouts/page.html" %} 
+
+{% include 'navbar3.html' with response=tag %}
+
+{% block content %}
+<div class="page new-question-page">
+	<h1 class="title">New Blog</h1>
+	<form method="POST" action="" class="new-question-form">
+		{% csrf_token %}
+	<div class="fieldWrapper">
+		<label for="{{ form.title.id_for_label }}">Title:</label>
+		{{ form.title }}
+		<span class="error">{{ form.title.error }}</span>
+	</div>
+	<div class="fieldWrapper">
+		<label for="{{ form.body.id_for_label }}">Body:</label>
+		{{ form.body }}
+		<span class="error">{{ form.body.error }}</span>
+	</div>
+	{% if form.non_field_errors %}
+		<div class="non_form_errors">
+			<span class="error">{{ form.non_field_errors.as_ul }}</span>
+		</div>
+	{% endif %}
+	<input type="submit" value="Submit" class="submit-button"/>
+	</form>
+</div>
+{% endblock %}

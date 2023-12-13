@@ -1,0 +1,19 @@
+{% extends "layouts/page.html" %} 
+
+{% block content %}
+
+{% include 'navbar3.html' with tag=tag %}
+
+<h1 class="title">All Blogs</h1>
+
+<div class="page">
+  {% for blog in blogs %}
+	<div class="question-list-item">
+		<a href="{% url 'blog' tag blog.id %}">
+			<p class="question-list-item-title">{{ blog.title }}</p>
+			<p class="question-list-item-author">by {{ blog.author.username }}</p>
+		</a>
+	</div>
+  {% endfor %}
+</div>
+{% endblock %}

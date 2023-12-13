@@ -1,0 +1,35 @@
+{% extends 'layouts/page.html' %}
+
+
+{% block content %}
+
+{% include 'navbar3.html' with tag=tag %}
+
+<div class="page question-page">
+	<h2 class="question-title">{{blog.title}}</h2><br>
+	<p>{{blog.body}}</p>
+	<span class="question-author">author : {{blog.author.username}}</span>
+
+	<div class="responses-container">
+		<h4 class="responses-container-heading">Responses</h4>
+		{% if not blog.blog_responses.all %}
+			<p class="no-responses-text">No responses yet</p>
+		{% else %}
+			{% for response in blog.get_responses %}
+				{% include 'components/blogResponse.html' with response=response %}
+			{% endfor %}
+		{% endif %}
+	</div>
+
+	{% if user.is_authenticated %}
+	<form method="POST" action="" class="response-form">
+		{% csrf_token %}
+		<div class="fieldWrapper">
+			<label for="{{blog_response_form.body.id_for_label}}">Your answer:</label>
+			{{blog_response_form.body}}
+		</div>
+		<input type="submit" value="Send" class="submit-button"/>
+	</form>
+	{% endif %}
+</div>
+{% endblock %}

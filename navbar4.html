@@ -1,0 +1,16 @@
+
+  <nav class="navbar">
+	<div class="main-menu">
+	  <ul>
+		<li><a href="{% url 'index' %}">Rooms</a></li>
+	  </ul>
+	</div>
+	<div class="user-menu">
+	  <ul>
+		
+		  <li><a href="{% url 'all-questions' tag %}">Questions</a></li>
+		  <li><a href="{% url 'new-poll' tag %}">Poll</a></li>
+		  <li><a href="{% url 'all-blog' tag %}">Blogs</a></li>
+	  </ul>
+	</div>
+  </nav>

@@ -1,0 +1,29 @@
+{% extends 'layouts/page.html' %}
+
+{% block content %}
+
+<div class="page question-page">
+	<h2 class="question-title">{{poll.title}}</h2>
+	<span class="question-author">author : {{poll.author.username}}</span>
+
+	<form method="POST" action=" {% url 'poll-result' tag poll.id %} ">
+		{% csrf_token %}
+	<ul class="list-group" style="margin:0px">
+		{% for option in options %}
+		
+		<label>
+			<li class="list-group-item">
+				<input class="form-check-input me-1" type="radio" name = 'choice' value="{{option.id}}" aria-label="...">
+				{{option.text}}
+			  </li>
+		</label>
+		{% endfor %}
+	
+		
+	</ul>
+	<input type="submit" value = "Submit" class = 'btn btn-primary'>
+	</form>
+
+</div>
+
+{% endblock %}

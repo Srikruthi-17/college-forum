@@ -1,0 +1,26 @@
+{% extends "layouts/page.html" %} 
+
+{% block content %}
+
+{% include 'navbar2.html' with tag=tag %}
+
+<h1 class="title">All questions</h1>
+
+<div class="page">
+  {% for question in questions %}
+	<div class="question-list-item">
+		{% if question.is_poll is True %}
+		<a href="{% url 'poll' 'tag' question.id %}">
+			<p class="question-list-item-title">{{ question.title }}</p>
+			<p class="question-list-item-author">by {{ question.author.username }}</p>
+		</a>
+		{% else %}
+		<a href="{% url 'question' 'tag' question.id %}">
+			<p class="question-list-item-title">{{ question.title }}</p>
+			<p class="question-list-item-author">by {{ question.author.username }}</p>
+		</a>
+		{% endif %}
+	</div>
+  {% endfor %}
+</div>
+{% endblock %}

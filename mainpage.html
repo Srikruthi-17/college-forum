@@ -1,0 +1,40 @@
+{% extends "layouts/page.html" %} {% block content %}
+
+{% include 'navbar1.html' %}
+
+<h1 class="title">All Rooms</h1>
+
+<div class="page">
+  <div class="room-list-item">
+    <a href="{% url 'all-questions' 'cse' %}">
+      <p class="room-title">Computer Science Engineering</p>
+    </a>
+  </div>
+  <div class="room-list-item">
+    <a href="{% url 'all-questions' 'ece' %}">
+      <p class="room-title">Electronics and Communication Engineering</p>
+    </a>
+  </div>
+  <div class="room-list-item">
+    <a href="{% url 'all-questions' 'it' %}">
+      <p class="room-title">Information Technology</p>
+    </a>
+  </div>
+  <div class="room-list-item">
+    <a href="{% url 'all-questions' 'aiml' %}">
+      <p class="room-title">Artificial Intelligence and Machine Learning</p>
+    </a>
+  </div>
+  <div class="room-list-item">
+    <a href="{% url 'all-questions' 'cs' %}">
+      <p class="room-title">Cyber Security</p>
+    </a>
+  </div>
+  <div class="room-list-item">
+    <a href="{% url 'all-questions' 'eee' %}">
+      <p class="room-title">Electronics and Electrical Engineering</p>
+    </a>
+  </div>
+</div>
+
+{% endblock %}
